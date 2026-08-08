@@ -18,9 +18,12 @@ It never scores productivity: no rankings, no commit/PR/LOC counts as effort, no
 /worklog week --repo owner/backend
 /worklog week --ticket RBI-023         # exact ID, never semantic matching
 /worklog week --user @developer
+/worklog week --lang en                # output language; default is Spanish (es)
 /worklog yesterday --verbose           # append evidence/provenance
 /worklog today --note "..."            # manual context, labeled as such
 ```
+
+The default output language is Spanish; override per run with `--lang` or per repo with a `language:` entry in `.worklog.yml`. IDs, repo names, and quoted technical text stay verbatim.
 
 ## Installation
 

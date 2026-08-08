@@ -54,6 +54,7 @@ Keep flags limited to:
 --repo <repo>
 --ticket <ticket>
 --user <login|@login|me>
+--lang <code>
 --verbose
 --note "..."
 ```
@@ -64,6 +65,7 @@ Defaults:
 - repo = all relevant accessible repos;
 - day range = concise daily output;
 - week/custom range = explanatory output (see section 17);
+- output language = Spanish (`es`); `--lang <code>` or a repo `language:` convention overrides it;
 - `--verbose` = append compact evidence/provenance.
 
 ---
@@ -140,6 +142,7 @@ If `.worklog.yml` / `.worklog.yaml` or an established project config contains wo
 
 ```yaml
 worklog:
+  language: en
   ticket_patterns:
     - '\\bRBI-\\d+\\b'
     - '\\bWP-\\d+\\b'
@@ -557,6 +560,7 @@ No attributable GitHub activity was found for the selected period.
 
 Rules for every range:
 
+- Write the narrative in the default output language — **Spanish (`es`)** — unless `--lang` or a repo `language:` convention overrides it. Ticket IDs, PR/issue numbers, repo and branch names, code identifiers, and quoted commit/PR text stay verbatim. The examples below illustrate structure, not language.
 - Date events at day granularity using bare dates (`Aug 6`), not weekday names — weekday labels resurface weekend patterns; exact clock times exist to decide period membership, not for output.
 - Time-of-day, late-night, and weekend patterns describe the person, not the work — leave them out.
 - A ticket spanning several repos appears once, anchored to the ticket and naming the repos inside it, not once per repo.
@@ -659,6 +663,7 @@ LOC/counts may appear only as context here.
 - **Bots:** exclude bot-authored activity by default; bot/check output may be contextual evidence.
 - **Generated files:** ignore volume, not necessarily semantic relevance.
 - **Cherry-pick/backport:** describe propagation/delivery when identifiable.
+- **Same-titled PRs** (across repos or dates): report them as same-titled deliveries; call them propagation, retries, or a stack only when a body, linkage, or commit states that relationship.
 - **Revert:** report both delivery and reversal; do not call it unqualified success.
 - **Multiple repos:** group by repository; never duplicate the same event.
 - **No ticket:** PR title is a valid WorkItem; if no PR, use a conservative unlinked cluster.
